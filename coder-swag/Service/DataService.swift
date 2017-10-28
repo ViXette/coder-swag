@@ -12,6 +12,10 @@ class DataService {
 	
 	static let instance = DataService()
 	
+	private init () {
+		
+	}
+	
 	private let categories = [
 		Category(title: "SHIRTS", image: #imageLiteral(resourceName: "shirts")),
 		Category(title: "HOODIES", image: #imageLiteral(resourceName: "hoodies")),

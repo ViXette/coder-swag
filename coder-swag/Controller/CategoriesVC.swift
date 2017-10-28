@@ -35,6 +35,23 @@ class CategoriesVC: UIViewController, UITableViewDelegate, UITableViewDataSource
 		
 		return CategoryCell()
 	}
+	
+	
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		performSegue(withIdentifier: "toProductsVC", sender: DataService.instance.getCategories()[indexPath.row])
+	}
+	
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if let productsVC = segue.destination as? ProductsVC {
+			assert(sender as? Category != nil)
+			productsVC.initProducts(category: sender as! Category)
+			
+			let bar_button = UIBarButtonItem()
+			bar_button.title = ""
+			navigationItem.backBarButtonItem = bar_button
+		}
+	}
 
 }
 
